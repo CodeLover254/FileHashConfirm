@@ -16,7 +16,7 @@ namespace FileHashConfirm
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        public async Task<string[]> getFileChecksumsAsync(string file)
+        public async Task<string[]> GetFileChecksumAsync(string file)
         {
             var results = await Task.Run(() => CalculateHashes(file));
             return results;

@@ -1,6 +1,7 @@
 C#/FileHashConfirm/bin/*
 C#/FileHashConfirm/obj/*
-.vs/*
+C#/.vs/*
+C#/.idea/*
 Java/FileHashConfirm/.idea/*
 Java/FileHashConfirm/FileHashConfirm.iml
 Java/FileHashConfirm/out/*

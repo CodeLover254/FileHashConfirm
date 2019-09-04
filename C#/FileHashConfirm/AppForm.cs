@@ -41,7 +41,7 @@ namespace FileHashConfirm
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             if (files.Length == 1)
             {
-                hashes = await hashingMachine.getFileChecksumsAsync(files[0]);
+                hashes = await hashingMachine.GetFileChecksumAsync(files[0]);
                 ProcessHashes();
                 dropZoneLabel.Text = "Drag and Drop File Here";
             }
