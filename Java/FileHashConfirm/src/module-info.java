@@ -1,3 +1,4 @@
+/*
 module FileHashConfirm {
     requires javafx.base;
     requires javafx.controls;
@@ -5,4 +6,4 @@ module FileHashConfirm {
     requires com.google.common;
 
     opens com.filehashconfirm;
-}
+}*/
