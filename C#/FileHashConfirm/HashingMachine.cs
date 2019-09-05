@@ -16,7 +16,7 @@ namespace FileHashConfirm
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        public async Task<string[]> GetFileChecksumAsync(string file)
+        public static async Task<string[]> GetFileChecksumAsync(string file)
         {
             var results = await Task.Run(() => CalculateHashes(file));
             return results;
@@ -28,12 +28,12 @@ namespace FileHashConfirm
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        private string[] CalculateHashes(string file)
+        private static string[] CalculateHashes(string file)
         {
-            string md5Checksum = GetMD5Checksum(file);
-            string sha1Checksum = GetSHA1Checksum(file);
-            string sha256Checksum = GetSHA256Checksum(file);
-            return new string[] { md5Checksum, sha1Checksum, sha256Checksum };
+            string md5Checksum = GetMd5Checksum(file);
+            string sha1Checksum = GetSha1Checksum(file);
+            string sha256Checksum = GetSha256Checksum(file);
+            return new [] { md5Checksum, sha1Checksum, sha256Checksum };
         }
 
        /// <summary>
@@ -41,7 +41,7 @@ namespace FileHashConfirm
        /// </summary>
        /// <param name="file"></param>
        /// <returns></returns>
-        private string GetMD5Checksum(string file)
+        private static string GetMd5Checksum(string file)
         {
             using (FileStream stream = File.OpenRead(file))
             {
@@ -57,7 +57,7 @@ namespace FileHashConfirm
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        private string GetSHA1Checksum(string file)
+        private static string GetSha1Checksum(string file)
         {
             using (FileStream stream = File.OpenRead(file))
             {
@@ -73,7 +73,7 @@ namespace FileHashConfirm
       /// </summary>
       /// <param name="file"></param>
       /// <returns></returns>
-        private string GetSHA256Checksum(string file)
+        private static string GetSha256Checksum(string file)
         {
             using (FileStream stream = File.OpenRead(file))
             {

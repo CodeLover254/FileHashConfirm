@@ -13,22 +13,21 @@ namespace FileHashConfirm
     public partial class AppForm : Form
     {
         //Class Attributes
-        private HashingMachine hashingMachine = new HashingMachine();
-        private const int MD5_LENGTH = 32;
-        private const int SHA1_LENGTH = 40;
-        private const int SHA256_LENGTH = 64;
-        private Color successColor = Color.FromArgb(192, 255, 192);
-        private Color errorColor = Color.FromArgb(255, 192, 192);
-        private string[] hashes = new string[] { "", "", "" };
-        private PictureBox[] pictureBoxes; 
-        private TextBox[] textBoxes; 
+        private const int Md5Length = 32;
+        private const int Sha1Length = 40;
+        private const int Sha256Length = 64;
+        private readonly Color _successColor = Color.FromArgb(192, 255, 192);
+        private readonly Color _errorColor = Color.FromArgb(255, 192, 192);
+        private string[] _hashes = new string[] { "", "", "" };
+        private PictureBox[] _pictureBoxes; 
+        private TextBox[] _textBoxes; 
 
         //Constructor
         public AppForm()
         {
             InitializeComponent();
-            this.pictureBoxes = new PictureBox[] { statusIconMD5, statusIconSHA1, statusIconSHA256 };
-            this.textBoxes = new TextBox[] { md5HashTextBox, sha1HashTextBox, sha256HashTextBox };
+            this._pictureBoxes = new PictureBox[] { statusIconMD5, statusIconSHA1, statusIconSHA256 };
+            this._textBoxes = new TextBox[] { md5HashTextBox, sha1HashTextBox, sha256HashTextBox };
         }
 
         /// <summary>
@@ -41,7 +40,7 @@ namespace FileHashConfirm
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             if (files.Length == 1)
             {
-                hashes = await hashingMachine.GetFileChecksumAsync(files[0]);
+                _hashes = await HashingMachine.GetFileChecksumAsync(files[0]);
                 ProcessHashes();
                 dropZoneLabel.Text = "Drag and Drop File Here";
             }
@@ -118,31 +117,31 @@ namespace FileHashConfirm
         /// </summary>
         private void ProcessHashes()
         {
-            md5HashTextBox.Text = hashes[0];
-            sha1HashTextBox.Text = hashes[1];
-            sha256HashTextBox.Text = hashes[2];
+            md5HashTextBox.Text = _hashes[0];
+            sha1HashTextBox.Text = _hashes[1];
+            sha256HashTextBox.Text = _hashes[2];
             MakeComparisons();
         }
 
         /// <summary>
         /// A method to compare a specific hash to a user input
         /// </summary>
-        public void MakeComparisons()
+        private void MakeComparisons()
         {
             string inputHash = givenHashTextBox.Text;
             if (inputHash != "")
             {
-                if (inputHash.Length == MD5_LENGTH)
+                if (inputHash.Length == Md5Length)
                 {
-                    CompareHashes(inputHash, hashes[0], md5HashTextBox, statusIconMD5);
+                    CompareHashes(inputHash, _hashes[0], md5HashTextBox, statusIconMD5);
                 }
-                else if (inputHash.Length == SHA1_LENGTH)
+                else if (inputHash.Length == Sha1Length)
                 {
-                    CompareHashes(inputHash, hashes[1], sha1HashTextBox, statusIconSHA1);
+                    CompareHashes(inputHash, _hashes[1], sha1HashTextBox, statusIconSHA1);
                 }
-                else if (inputHash.Length == SHA256_LENGTH)
+                else if (inputHash.Length == Sha256Length)
                 {
-                    CompareHashes(inputHash, hashes[2], sha256HashTextBox, statusIconSHA256);
+                    CompareHashes(inputHash, _hashes[2], sha256HashTextBox, statusIconSHA256);
                 }
                 else
                 {
@@ -159,7 +158,7 @@ namespace FileHashConfirm
         /// <param name="hash"></param>
         /// <param name="textbox"></param>
         /// <param name="picturebox"></param>
-        public void CompareHashes(string input, string hash, TextBox textbox, PictureBox picturebox)
+        private void CompareHashes(string input, string hash, TextBox textbox, PictureBox picturebox)
         {
             if (input.ToLower().Equals(hash.ToLower()))
             {
@@ -182,12 +181,12 @@ namespace FileHashConfirm
         {
             if (success)
             {
-                textbox.BackColor = successColor;
+                textbox.BackColor = _successColor;
                 picturebox.Image = Properties.Resources.tick;
             }
             else
             {
-                textbox.BackColor = errorColor;
+                textbox.BackColor = _errorColor;
                 picturebox.Image = Properties.Resources.cancel;
             }
         }
@@ -200,12 +199,12 @@ namespace FileHashConfirm
         /// <param name="clearTextBoxes"></param>
         private void Reset(bool clearTextBoxes)
         {
-            foreach (var pictureBox in pictureBoxes)
+            foreach (var pictureBox in _pictureBoxes)
             {
                 pictureBox.Image = null;
             }
 
-            foreach (var textBox in textBoxes)
+            foreach (var textBox in _textBoxes)
             {
                 if (clearTextBoxes)
                 {
@@ -221,9 +220,9 @@ namespace FileHashConfirm
         /// </summary>
         private void NoMatchState()
         {
-            for(int i = 0; i < pictureBoxes.Length; i++)
+            for(int i = 0; i < _pictureBoxes.Length; i++)
             {
-                SetStatusDisplay(textBoxes[i], pictureBoxes[i], false);
+                SetStatusDisplay(_textBoxes[i], _pictureBoxes[i], false);
             }
         }
 
