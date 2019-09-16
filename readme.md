@@ -1,3 +1,7 @@
+<p>
+<img src="https://i.imgur.com/TSkRsPQ.png" alt="previews">
+</p>
+
 # FileHashConfirm
 FileHashConfirm is a simple desktop application that compares a calculated file hash against a provided one. These checksums are used as a measure of file integrity.
 
