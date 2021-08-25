@@ -103,7 +103,8 @@ jobs:
           name: FileHashConfirm-MacOS-Build
       - name: Create Github Release
         uses: ncipollo/release-action@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          artifacts: "FileHashConfirm-MacOS-Build,FileHashConfirm-Linux-Build"
+          artifacts: "FileHashConfirm-MacOS-Build.zip,FileHashConfirm-Linux-Build.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
           
