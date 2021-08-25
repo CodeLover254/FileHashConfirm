@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: FileHashConfirm-Linux-Build
-          path: Java/FileHashConfirm/target/FileHashConfirm.zip
+          path: Java/FileHashConfirm/target/FileHashConfirm-Linux-Build.zip
   
   build-macos:
     # Runs on Mac Os
@@ -88,7 +88,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: FileHashConfirm-MacOS-Build
-          path: Java/FileHashConfirm/target/FileHashConfirm.zip
+          path: Java/FileHashConfirm/target/FileHashConfirm-MacOS-Build.zip
 
           
   create-java-release:
