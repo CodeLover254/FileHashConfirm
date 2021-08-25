@@ -11,9 +11,10 @@ This tool makes it very simple by just requiring you to drag and drop the file t
 This program does not require any installation. It is fully portable and can run even from a thumb drive.
 
 ## Supported Operating Systems
-For the mean time only Windows has a ready to run executable. Please note that you need at least .NET Framework 4.5.2 for the program to run on you Windows PC.
+All operating systems are currently supported. Please find a build for your OS in the releases 
+section of this repository.
 
-For Mac and Linux, you can clone the project and build the Java source into an executable jar binary. I welcome anyone willing to produce these builds as a contributor to the project. JavaFX is required for the project to work.
+For any MacOS or Linux users, the application launcher is located inside the FileHashConfirm/bin folder
 
 ## Coming Features
 Validating checksums right from the context menu.
