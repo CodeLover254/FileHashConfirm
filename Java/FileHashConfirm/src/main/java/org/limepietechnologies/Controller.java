@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -76,8 +77,8 @@ public class Controller implements Initializable {
                 hashes = HashingMachine.getFileChecksum(file);
                 processHashes();
                 dropZoneLabel.setText("Drag and Drop File Here.");
-            }catch (IOException exception){
-                showError("There was an error reading the file");
+            }catch (IOException | NoSuchAlgorithmException exception){
+                showError("There was an error reading the file or the hashing algorithm is not supported");
             }
         }else{
             showError("Only Files Allowed.");
