@@ -100,7 +100,8 @@ jobs:
         with:
           name: FileHashConfirm-MacOS-Build
       - name: Create Github Release
-        uses: elgohr/Github-Release-Action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "*.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
           
