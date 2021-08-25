@@ -31,7 +31,7 @@ jobs:
         uses: actions/cache@v2.1.6
         with:
           path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles("**/pom.mxl") }}
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
       # create the build
@@ -68,7 +68,7 @@ jobs:
         uses: actions/cache@v2.1.6
         with:
           path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles("**/pom.mxl") }}
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
       # create the build
