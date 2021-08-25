@@ -25,6 +25,7 @@ jobs:
         uses: actions/setup-java@v2.3.0
         with:
           java-version: 11
+          distribution: jdk
       
       # cache dependencies
       - name: Cache Maven dependencies
@@ -62,6 +63,7 @@ jobs:
         uses: actions/setup-java@v2.3.0
         with:
           java-version: 11
+          distribution: jdk
       
       # cache dependencies
       - name: Cache Maven dependencies
